@@ -1,7 +1,8 @@
 Product Management Frontend (Next.js + NextAuth + React Query)
 
 This is the frontend dashboard for the Full Stack Product Management Application.
-It allows authenticated users to manage products, upload images, update details, and manage the cart.
+It allows authenticated users to manage products, upload images, update details, and manage the cart. 
+fixed email "test@test.com" and password "password" is used, and its pre-populated for the sake of machine task during login. 
 
 The frontend is built using:
     Next.js (App Router)
@@ -15,7 +16,7 @@ The frontend is built using:
 Features
     1. Authentication
         NextAuth Credentials Provider
-        Simple login with email & password
+        Simple login using fixed email & password (used for this machine task)
         User ID passed to backend via: x-user-id: <user-id>
     2. Product Management
         Create product (name, price, description, upload multiple images)

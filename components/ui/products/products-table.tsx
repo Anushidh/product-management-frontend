@@ -185,6 +185,11 @@ export function ProductsTable({ data }: ProductsTableProps) {
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    initialState: {
+    pagination: {
+      pageSize: 5, // show 10 items per page
+    },
+  },
   });
 
   return (

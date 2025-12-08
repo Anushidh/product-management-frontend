@@ -68,7 +68,6 @@ export default function ProductsPage() {
         <>
           {view === "grid" && (
             <section className="space-y-3">
-              <h3 className="text-lg font-medium">Grid View</h3>
               <ProductsGrid data={data} />
             </section>
           )}
