@@ -57,4 +57,4 @@ Installation & Setup
         
 Integration With Backend
     For every authenticated request, the frontend sends: x-user-id: session.user.id
-
+    Live backend url = https://ourapp.space
