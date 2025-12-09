@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import {
+  type SortingState,
   ColumnDef,
   flexRender,
   getCoreRowModel,
@@ -29,7 +30,7 @@ type ProductsTableProps = {
 };
 
 export function ProductsTable({ data }: ProductsTableProps) {
-  const [sorting, setSorting] = useState([]);
+  const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
 
   const router = useRouter();
@@ -186,10 +187,10 @@ export function ProductsTable({ data }: ProductsTableProps) {
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
-    pagination: {
-      pageSize: 5, // show 10 items per page
+      pagination: {
+        pageSize: 5, // show 10 items per page
+      },
     },
-  },
   });
 
   return (
