@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { Loader2 } from "lucide-react";
 
 export default function CartPage() {
   const { data: cart, isLoading, isError } = useCart();
@@ -37,10 +38,14 @@ export default function CartPage() {
   };
 
   if (isLoading) {
-    return <p className="text-sm text-slate-400">Loading cart...</p>;
+    return (
+      <div className="flex justify-center items-center py-10">
+        <Loader2 className="w-6 h-6 animate-spin text-slate-400" />
+      </div>
+    );
   }
 
-  if (isError || !cart) {
+  if (isError) {
     return (
       <div className="space-y-3">
         <p className="text-sm text-red-400">Failed to load cart.</p>
@@ -54,7 +59,7 @@ export default function CartPage() {
     );
   }
 
-  const hasItems = cart.items && cart.items.length > 0;
+  const hasItems = cart?.items && cart.items.length > 0;
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
@@ -128,10 +133,10 @@ export default function CartPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="flex items-center gap-4 p-3 border border-slate-800 rounded-lg"
+                    className="flex items-center gap-4 p-3 border border-slate-300 rounded-lg"
                   >
                     {/* image */}
-                    <div className="w-20 h-20 rounded-md overflow-hidden border border-slate-700 flex-shrink-0">
+                    <div className="w-20 h-20 rounded-md overflow-hidden border border-slate-300 flex-shrink-0">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={product.images?.[0]}
@@ -189,7 +194,7 @@ export default function CartPage() {
           </div>
 
           {/* total */}
-          <div className="flex items-center justify-between border-t border-slate-800 pt-4">
+          <div className="flex items-center justify-between border-t border-slate-300 pt-4">
             <span className="text-sm font-medium">Total</span>
             <span className="text-lg font-semibold">₹{total.toFixed(2)}</span>
           </div>

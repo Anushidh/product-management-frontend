@@ -6,7 +6,7 @@ import { ProductsTable } from "@/components/ui/products/products-table";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { LayoutGrid, Table } from "lucide-react";
+import { LayoutGrid, Table, Loader2 } from "lucide-react";
 
 export default function ProductsPage() {
   const { data, isLoading, isError } = useProducts();
@@ -54,8 +54,8 @@ export default function ProductsPage() {
 
       {/* Loading / error states */}
       {isLoading && (
-        <div className="flex items-center justify-center h-64">
-          <p className="text-sm text-slate-400">Loading products...</p>
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="w-10 h-10 animate-spin text-slate-400" />
         </div>
       )}
 
