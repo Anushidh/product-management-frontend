@@ -54,7 +54,9 @@ export default function ProductsPage() {
 
       {/* Loading / error states */}
       {isLoading && (
-        <p className="text-sm text-slate-400">Loading products...</p>
+        <div className="flex items-center justify-center h-64">
+          <p className="text-sm text-slate-400">Loading products...</p>
+        </div>
       )}
 
       {isError && (
