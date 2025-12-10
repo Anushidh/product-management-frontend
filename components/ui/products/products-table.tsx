@@ -171,24 +171,32 @@ export function ProductsTable({ data }: ProductsTableProps) {
     ],
     [router, deleteMutation]
   );
+  const filteredData = useMemo(() => {
+    if (!globalFilter.trim()) return data;
+    const value = globalFilter.toLowerCase().trim(); 
+    return data.filter((product) => {
+      const name = product.name.toLowerCase().trim();
+      return name.startsWith(value);
+    });
+  }, [data, globalFilter]);
 
   const table = useReactTable({
-    data,
+    data: filteredData,
     columns,
     state: {
       sorting,
-      globalFilter,
+      // globalFilter,
     },
     onSortingChange: setSorting,
-    onGlobalFilterChange: setGlobalFilter,
+    // onGlobalFilterChange: setGlobalFilter,
 
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
+    // getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
       pagination: {
-        pageSize: 5, // show 10 items per page
+        pageSize: 5, // show 5 items per page
       },
     },
   });
